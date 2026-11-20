@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>美味餐廳大挑戰</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff8ef;--card:#fff;--tx:#2b2118;--mu:#7a6a5c;--bd:#ecd9c4;--ac:#d9531e;--ac2:#fbe3d3;--up:#1f8a4c;--dn:#c62f2f;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1814;--card:#2a231d;--tx:#f5ebe0;--mu:#b5a594;--bd:#463b31;--ac:#ff8a52;--ac2:#4a2e20;--up:#55d08a;--dn:#ff7b7b;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.7 -apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0;text-align:center}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.st{font-size:.85rem;color:var(--mu)}
+.st b{display:block;font-size:1.25rem;color:var(--tx)}
+.bar{height:8px;border-radius:4px;background:var(--bd);overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+.rd{color:var(--ac);font-weight:700}
+.facts{background:var(--ac2);border-radius:10px;padding:10px 14px;font-size:.92rem;margin:10px 0}
+.facts div{margin:2px 0}
+button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin:6px 0;width:100%;text-align:left;cursor:pointer}
+button:hover{border-color:var(--ac)}
+button.go{background:var(--ac);color:#fff;border-color:var(--ac);text-align:center;font-weight:700}
+.d{display:flex;gap:12px;flex-wrap:wrap;font-weight:700;margin:8px 0}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.know{border-left:4px solid var(--ac);padding-left:10px;color:var(--mu);font-size:.93rem}
+.big{font-size:2.4rem;text-align:center;font-weight:800;color:var(--ac)}
+body{background:radial-gradient(circle at 15% 0,var(--ac2),transparent 45%),radial-gradient(circle at 90% 10%,var(--ac2),transparent 40%),var(--bg);min-height:100vh}
+main{padding:20px 16px 40px}
+h1{font-size:1.9rem;letter-spacing:.08em;margin:12px 0 2px;color:var(--ac);text-shadow:0 2px 0 var(--ac2)}
+.sub{display:block;font-size:.85rem;font-weight:400;letter-spacing:.2em;color:var(--mu);margin-top:2px}
+.card{border-radius:20px;padding:20px;box-shadow:0 6px 24px rgba(120,70,30,.12);animation:up .35s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.stats{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;gap:10px;padding:12px 14px}
+.st{text-align:center;font-weight:600}
+.st b{font-size:1.5rem;margin-top:2px}
+.bar{height:10px;border-radius:5px}
+.bar i{border-radius:5px}
+.st:nth-child(1) .bar i{background:linear-gradient(90deg,#f6b73c,#ee8f1a)}
+.st:nth-child(2) .bar i{background:linear-gradient(90deg,#f58bb0,#e8508a)}
+.st:nth-child(3) .bar i{background:linear-gradient(90deg,#5fd39a,#2fa66a)}
+.rd{display:inline-block;background:var(--ac);color:#fff;padding:4px 14px;border-radius:999px;font-size:.9rem;margin-bottom:6px}
+.card p{font-size:1.02rem}
+.facts{border:1px dashed var(--ac);border-radius:14px;padding:12px 16px}
+.facts b{display:block;color:var(--ac);margin-bottom:4px}
+button{border-radius:16px;padding:14px 16px;border-width:2px;transition:transform .15s,box-shadow .15s,border-color .15s}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(120,70,30,.15)}
+button:active{transform:scale(.98)}
+button[data-j] b:first-child{display:inline-block;width:1.9em;height:1.9em;line-height:1.9em;text-align:center;border-radius:50%;background:var(--ac2);color:var(--ac);margin-right:8px}
+button.go{padding:14px;font-size:1.05rem;letter-spacing:.1em;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+button.go:hover{box-shadow:0 6px 0 rgba(0,0,0,.18)}
+.d{background:var(--ac2);border-radius:12px;padding:10px 14px}
+.know{background:var(--ac2);border-radius:0 12px 12px 0;padding:10px 14px}
+.big{font-size:2.8rem;margin:6px 0;text-shadow:0 3px 0 var(--ac2)}
+@media (max-width:480px){.st{font-size:.78rem}.st b{font-size:1.25rem}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<main>
+<h1>🍜 美味餐廳大挑戰<span class="sub">DELICIOUS RESTAURANT CHALLENGE</span></h1>
+<div class="card stats" id="stats"></div>
+<div id="view"></div>
+</main>
+<script>
+const R=[
+{t:"冷藏庫溫度異常",s:"開幕前一天，你收了一批新鮮雞肉，卻發現冷藏庫溫度計顯示 9°C，師傅說「應該沒差啦」。",f:["冷藏溫度應維持在 7°C 以下（建議 0～5°C），冷凍則為 -18°C 以下。","7～60°C 是細菌快速繁殖的「危險溫度帶」。"],
+o:[["先照常營業，打烊後再處理冷藏庫",[5,0,-25],"雞肉在危險溫度帶停留過久，沙門氏菌等細菌可能大量繁殖，你賭上了客人的健康，雖然省下成本，但風險極高。"],["立即停用可疑雞肉、報修冷藏庫，並重新叫貨",[-15,-5,10],"你花了不少錢，也讓部分餐點缺貨，但守住了食安底線。"],["請師傅檢修，並量測食材中心溫度，只丟棄超標的食材",[-8,-3,5],"依據實際溫度與時間判斷，減少浪費，但仍有一定判斷風險，需要確實記錄。"]],k:"冷藏 ≤7°C、冷凍 ≤-18°C；危險溫度帶（7～60°C）停留不宜超過 2 小時。"},
+{t:"砧板上的交叉污染",s:"午餐尖峰時，新來的助手用同一塊砧板先切生雞肉，又直接拿來切生菜沙拉。",f:["生食與熟食、生肉與蔬果應分開處理，避免交叉污染。","接觸生肉後要用肥皂搓洗雙手至少 20 秒。"],
+o:[["用水沖一下砧板，趕快出餐",[0,0,-20],"水沖無法去除油脂與細菌，生雞肉上的細菌已轉移到即食沙拉上，風險很高。"],["採購色標砧板與刀具，並教育全體員工",[-10,0,12],"短期花費增加，但建立了長期有效的分區制度。"],["每次切完用熱水加洗潔精清洗，繼續共用同一塊",[-3,-2,3],"清潔有幫助，但尖峰時容易漏做，仍不如物理分隔可靠。"]],k:"生熟食分開（色標工具）、先洗手再備餐，是預防交叉污染的核心。"},
+{t:"菜單設計大考驗",s:"你要為開幕設計菜單。食材採購報價出來了，牛排成本很高，青菜與雞肉則相對便宜。",f:["餐飲業常以食材成本率約 30～35% 作為參考。","菜單可搭配「招牌高毛利」、「平價入門」與蔬食，兼顧營養與選擇。"],
+o:[["主打高價牛排，打造高級形象",[5,-12,0],"毛利看似不錯，但價位門檻高，客群變窄，很多顧客覺得吃不起。"],["設計平衡菜單：招牌主餐、平價套餐、蔬食與湯品",[8,10,0],"兼顧成本與顧客需求，營養搭配也更完整，但備料較複雜。"],["全面低價大份量，走薄利多銷路線",[-8,8,0],"客人很開心，但食材成本率偏高，利潤被壓縮。"]],k:"菜單要平衡成本率、毛利、營養與顧客需求，而非只追求單一目標。"},
+{t:"倉庫裡的過期食材",s:"盤點倉庫時，你發現後排有已過期的牛奶，還有一箱快壞掉的蔬菜被新貨壓在最底下。",f:["食材應「先進先出」（FIFO），並標示開封與到期日。","過期食品不可使用，也不能靠加熱「救回來」。"],
+o:[["全部煮熟再用，反正加熱就安全",[0,-5,-15],"加熱無法消除部分細菌產生的毒素，也不能讓過期食品變安全。"],["丟棄過期品，建立先進先出與標籤制度，調整訂貨量",[-8,0,10],"短期有損耗，但降低了未來浪費與食安風險。"],["整個倉庫全部丟掉重新進貨",[-20,0,5],"雖然安全，但連仍可用的食材也丟了，成本損失太大。"]],k:"先進先出、標示日期、依銷量控管採購量，才能同時顧到安全與成本。"},
+{t:"帶病上工的廚師",s:"主廚昨晚開始腹瀉、發燒，但他說店裡缺人，戴上口罩手套還是想上班。",f:["有腹瀉、嘔吐、發燒等症狀的員工，不應接觸食品。","諾羅病毒傳染力強，症狀緩解後仍可能排毒，常建議停工約 48 小時以上。"],
+o:[["讓他戴口罩手套，照常煮菜",[5,0,-25],"手套無法阻止病原透過手、餐具傳播，一人帶病可能造成集體食物中毒。"],["請他回家休息，另找兼職人員代班",[-10,-3,10],"人事成本與出餐速度受影響，但守住了衛生。"],["調去收銀台，不碰食物，並重新分配廚房人力",[-4,-2,8],"可行的折衷方案，但他仍可能經手餐具與現金，須加強洗手與消毒。"]],k:"生病員工要暫停接觸食品，這是餐飲衛生管理的基本規範。"},
+{t:"顧客的花生過敏",s:"一位顧客點了沙拉，說自己對花生嚴重過敏，而這道沙拉的醬汁含花生醬。",f:["常見過敏原（如花生、蛋、牛奶、甲殼類等）應清楚標示。","備餐時要避免過敏原透過器具、油鍋交叉接觸。"],
+o:[["告訴他把花生挑掉就好",[0,-5,-25],"醬汁已沾染整份沙拉，可能引發嚴重過敏反應，甚至休克。"],["如實告知，使用乾淨器具重做無花生版本，並在菜單加註過敏原",[-6,8,8],"多花時間與成本，但顧客安心，也建立專業形象。"],["婉拒服務，請他改點其他餐廳",[0,-8,2],"安全是安全了，但錯失服務機會，顧客感受冷淡。"]],k:"清楚的過敏原標示與乾淨器具，是保護過敏顧客的關鍵。"},
+{t:"炎夏外送大作戰",s:"天氣很熱，外送訂單暴增。你的員工把熱湯、炸雞與冷飲、涼拌小菜一起裝進同一個袋子。",f:["熱食應維持 60°C 以上，冷食應維持 7°C 以下。","食物從出餐到食用，建議控制在 2 小時內。"],
+o:[["全部裝同一袋，節省包材與時間",[3,-8,-15],"冷熱互相影響，大量食物落入危險溫度帶，也容易變味、變質。"],["冷熱分裝、使用保溫保冷袋，並標示出餐時間",[-8,8,8],"包材成本上升，但品質與安全都提升，顧客評價更好。"],["夏天先暫停外送",[-5,-10,0],"避開風險，但損失營收與外送客群。"]],k:"冷熱分裝，熱食 ≥60°C、冷食 ≤7°C，並縮短運送時間。"},
+{t:"衛生局抽查前夕",s:"明天衛生局可能來抽查，你發現炸油顏色變黑、起泡又有油煙異味，已使用多日。",f:["油炸用油的極性化合物達 25% 即不得使用，需更換。","可用油品檢測試紙或儀器輔助判斷，並保留換油紀錄。"],
+o:[["繼續用，只多補一些新油",[3,0,-15],"補油無法解決劣化問題，油品劣化會產生有害物質，也容易被稽查開罰。"],["全部更換，使用檢測試紙並建立換油紀錄",[-10,3,12],"短期支出增加，但符合法規並提升品質。"],["先過濾掉雜質，再繼續使用",[-3,0,2],"過濾只能去雜質，無法改善油品劣化，效果有限。"]],k:"炸油要依檢測結果與使用狀況定期更換，並留下紀錄。"},
+{t:"颱風後菜價翻倍",s:"颱風過後，葉菜類價格大漲，採購單位說有攤販願意用便宜價錢賣你，但無法提供來源與發票。",f:["優先採用時令、當地食材，能降低成本與損耗。","食材應來源清楚、可追溯，才能在食安事件時追查。"],
+o:[["照原菜單不調整，用高價買進",[-15,3,0],"品質維持，但成本率暴增，利潤快速縮水。"],["改用時令替代食材，並微調菜單與份量",[-3,3,0],"控制成本也維持品質，但需要重新溝通菜單內容。"],["向來源不明的便宜攤販買菜",[8,-3,-18],"省了錢，卻無法確認農藥殘留與保存狀況，一旦出事難以追溯。"]],k:"控制成本要靠時令食材與損耗管理，不能犧牲來源可追溯性。"},
+{t:"最後一關：不熟的雞排",s:"尖峰時段，一位顧客大聲抱怨雞排中間還是粉紅色，其他客人也轉頭看過來。",f:["禽肉中心溫度應達 75°C 以上並持續 1 分鐘。","要用探針溫度計確認熟度，不能只靠顏色判斷。"],
+o:[["解釋說這是正常的嫩度",[0,-20,-5],"禽肉未熟有食物中毒風險，辯解只會讓客人更不信任你。"],["誠懇道歉、重做餐點，用探針確認，並檢討出餐流程",[-5,10,8],"成本小幅增加，卻把客訴變成建立信任的機會。"],["直接免單並道歉，但不檢討流程",[-10,5,0],"安撫了客人，但根本問題沒解決，下次仍可能再發生。"]],k:"禽肉以探針量測中心溫度達 75°C 以上，並從客訴中改善流程。"}
+];
+let S,i,hist;
+const $=id=>document.getElementById(id);
+const cl=(v)=>Math.max(0,Math.min(100,v));
+function stats(){
+ const a=[["💰 資金",S.m,0],["😊 滿意度",S.c,1],["🛡️ 食品安全",S.f,1]];
+ $("stats").innerHTML=a.map(x=>`<div class="st">${x[0]}<b>${x[1]}</b><div class="bar"><i style="width:${Math.min(100,x[1])}%"></i></div></div>`).join("");
+}
+function start(){S={m:100,c:100,f:100};i=0;hist=[];stats();
+ $("view").innerHTML=`<div class="card"><p>你是一位新手餐廳老闆，餐廳即將開幕。接下來 <b>10 個回合</b>，你會面對食品安全、食材保存、菜單設計、服務與成本等挑戰。</p><p>資金或食品安全降到 0，餐廳立刻倒閉；顧客滿意度降到 0，則會失去顧客支持。初始三項數值皆為 100。</p><button class="go" id="b0">開始經營！</button></div>`;
+ $("b0").onclick=round;}
+function round(){
+ const r=R[i];
+ $("view").innerHTML=`<div class="card"><div class="rd">第 ${i+1} / 10 回合：${r.t}</div><p>${r.s}</p><div class="facts"><b>📚 餐飲小知識</b>${r.f.map(x=>`<div>・${x}</div>`).join("")}</div>${r.o.map((o,j)=>`<button data-j="${j}"><b>${"ABC"[j]}.</b> ${o[0]}</button>`).join("")}</div>`;
+ document.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>pick(+b.dataset.j));
+}
+function fmt(n){return `<span class="${n>=0?"up":"dn"}">${n>=0?"+":""}${n}</span>`}
+function pick(j){
+ const r=R[i],o=r.o[j],d=o[1];
+ const oc=Math.round(S.c/10); // 營業收入
+ const p={m:S.m,c:S.c,f:S.f};
+ S.m+=d[0]+oc;S.c=cl(S.c+d[1]);S.f=cl(S.f+d[2]);
+ hist.push(j);stats();
+ const ml=S.m<=0?"💰 資金耗盡，餐廳無法再營運，宣告倒閉。":S.f<=0?"🛡️ 食品安全指數歸零，爆發食物中毒事件，餐廳被勒令停業。":S.c<=0?"😞 顧客滿意度歸零，客人不再上門，餐廳失去顧客支持。":"";
+ $("view").innerHTML=`<div class="card"><div class="rd">你選擇了 ${"ABC"[j]}：${o[0]}</div><p>${o[2]}</p><div class="know">💡 ${r.k}</div><div class="d"><span>💰 資金 ${fmt(d[0])}（營業收入 +${oc}）</span><span>😊 滿意度 ${fmt(S.c-p.c)}</span><span>🛡️ 食安 ${fmt(S.f-p.f)}</span></div><p>目前：資金 <b>${S.m}</b>｜滿意度 <b>${S.c}</b>｜食安 <b>${S.f}</b></p>${ml?`<button class="go" id="nx">查看結局</button>`:`<button class="go" id="nx">${i<9?"下一回合":"查看最終評價"}</button>`}</div>`;
+ $("nx").onclick=()=>{i++;if(ml)end(ml);else if(i>=10)end("");else round();};
+}
+function end(fail){
+ let h;
+ if(fail){h=`<div class="big">經營失敗</div><p>${fail}（撐到第 ${i} 回合）</p>`;}
+ else{
+  const sc=Math.round(Math.min(100,S.m*0.4)+S.c*0.3+S.f*0.3);
+  const g=sc>=85?"S 米其林級名店":sc>=70?"A 人氣優質餐廳":sc>=55?"B 穩定經營小店":sc>=40?"C 勉強存活":"D 岌岌可危";
+  h=`<div class="big">${g}</div><p style="text-align:center">綜合得分 ${sc} 分｜資金 ${S.m}・滿意度 ${S.c}・食安 ${S.f}</p>`;
+ }
+ $("view").innerHTML=`<div class="card">${h}<div class="facts"><b>🎓 你學到的 3 項重要餐飲知識</b><div>1. 危險溫度帶 7～60°C：冷藏 ≤7°C、熱存 ≥60°C，禽肉中心溫度要達 75°C 以上。</div><div>2. 預防污染：生熟分開、勤洗手、生病員工停工，並清楚標示過敏原。</div><div>3. 成本與保存：先進先出、時令食材、控制成本率，且食材來源必須可追溯。</div></div><button class="go" id="rs">再玩一次</button></div>`;
+ $("rs").onclick=start;
+}
+start();
+</script>
+</body>
+</html>
